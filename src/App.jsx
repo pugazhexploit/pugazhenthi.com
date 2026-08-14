@@ -16,6 +16,7 @@ import CyberFocus from './components/CyberFocus';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import BackToTop from './components/BackToTop';
+import { SpeedInsights } from '@vercel/speed-insights/react';
 import {
   useScrollReveal,
   useConsoleEasterEgg,
@@ -49,6 +50,7 @@ export default function App() {
       </main>
       <Footer />
       <BackToTop />
+      <SpeedInsights />
     </>
   );
 }
