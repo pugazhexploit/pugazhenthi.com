@@ -1,0 +1,30 @@
+.hyperspeed-container,
+#lights {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.hyperspeed-container canvas,
+#lights canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100% !important;
+  height: 100% !important;
+  display: block;
+}
+
+/* Subtle overlay vignette for enhanced text readability */
+.hyperspeed-overlay {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 50% 50%, rgba(10, 10, 15, 0.4) 0%, rgba(10, 10, 15, 0.85) 100%);
+  pointer-events: none;
+  z-index: 1;
+}
