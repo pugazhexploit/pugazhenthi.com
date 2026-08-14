@@ -5,4 +5,27 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   plugins: [react()],
   assetsInclude: ['**/*.glb'],
+  build: {
+    target: 'esnext',
+    cssCodeSplit: true,
+    chunkSizeWarningLimit: 1500,
+    rollupOptions: {
+      output: {
+        manualChunks(id) {
+          if (id.includes('@react-three/rapier') || id.includes('@dimforge/rapier3d-compat')) {
+            return 'rapier-physics';
+          }
+          if (id.includes('@react-three') || id.includes('meshline')) {
+            return 'react-three-drei';
+          }
+          if (id.includes('three')) {
+            return 'three-core';
+          }
+          if (id.includes('ogl')) {
+            return 'ogl-webgl';
+          }
+        },
+      },
+    },
+  },
 })

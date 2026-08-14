@@ -1,6 +1,7 @@
-import { useEffect, useRef, useState } from 'react';
-import LightRays from './LightRays';
-import Lanyard from './Lanyard';
+import { useEffect, useRef, useState, lazy, Suspense } from 'react';
+
+const LightRays = lazy(() => import('./LightRays'));
+const Lanyard = lazy(() => import('./Lanyard'));
 
 const roles = ['Cybersecurity Enthusiast', 'Bug Researcher', 'Ethical Hacker', 'Penetration Tester', 'CTF Player'];
 
@@ -58,21 +59,23 @@ export default function Hero() {
 
   return (
     <section id="hero" className="hero">
-      <LightRays
-        raysOrigin="top-center"
-        raysColor={isLight ? '#059669' : '#00ff41'}
-        raysSpeed={isLight ? 1.0 : 1.2}
-        lightSpread={isLight ? 0.9 : 0.85}
-        rayLength={isLight ? 1.5 : 1.6}
-        pulsating={true}
-        fadeDistance={isLight ? 1.1 : 1.2}
-        saturation={isLight ? 0.95 : 1.0}
-        followMouse={true}
-        mouseInfluence={0.15}
-        noiseAmount={isLight ? 0.04 : 0.06}
-        distortion={0.03}
-        className="hero-light-rays"
-      />
+      <Suspense fallback={null}>
+        <LightRays
+          raysOrigin="top-center"
+          raysColor={isLight ? '#059669' : '#00ff41'}
+          raysSpeed={isLight ? 1.0 : 1.2}
+          lightSpread={isLight ? 0.9 : 0.85}
+          rayLength={isLight ? 1.5 : 1.6}
+          pulsating={true}
+          fadeDistance={isLight ? 1.1 : 1.2}
+          saturation={isLight ? 0.95 : 1.0}
+          followMouse={true}
+          mouseInfluence={0.15}
+          noiseAmount={isLight ? 0.04 : 0.06}
+          distortion={0.03}
+          className="hero-light-rays"
+        />
+      </Suspense>
       <div className="hero-bg"></div>
       <div className="hero-content">
         <div className="hero-text">
@@ -111,15 +114,26 @@ export default function Hero() {
         </div>
 
         <div className="hero-lanyard-stage">
-          <Lanyard
-            position={[0, -0.4, 12.5]}
-            gravity={[0, -35, 0]}
-            fov={20}
-            frontImage="/profilepic.jpg"
-            backImage="/profilepic.jpg"
-            imageFit="cover"
-            lanyardWidth={1.3}
-          />
+          <Suspense
+            fallback={
+              <div className="lanyard-skeleton" aria-hidden="true">
+                <div className="lanyard-skeleton-strap"></div>
+                <div className="lanyard-skeleton-card">
+                  <img src="/profilepic.jpg" alt="Pugazhenthi J" className="lanyard-skeleton-img" width="220" height="300" />
+                </div>
+              </div>
+            }
+          >
+            <Lanyard
+              position={[0, -0.4, 12.5]}
+              gravity={[0, -35, 0]}
+              fov={20}
+              frontImage="/profilepic.jpg"
+              backImage="/profilepic.jpg"
+              imageFit="cover"
+              lanyardWidth={1.3}
+            />
+          </Suspense>
         </div>
       </div>
       <div className="deco-label" style={{ position: 'absolute', bottom: '30px', right: '60px' }}>[ SYSTEM ONLINE ]</div>
