@@ -59,12 +59,12 @@ const projects = [
 export default function Projects() {
   return (
     <section id="projects" className="section">
-      <div className="section-label reveal">Selected Projects</div>
+      <div className="section-label reveal">Operations Log</div>
       <h2 className="section-title reveal">
-        Selected<br />
-        <span>projects.</span>
+        Deployed<br />
+        <span>exploits & tools.</span>
       </h2>
-      <p className="section-subtitle reveal">Building tools for security, automation and AI.</p>
+      <p className="section-subtitle reveal">From proof-of-concept to production — every repo is a weapon forged in the lab.</p>
       <div className="projects-grid">
         {projects.map((p, i) => (
           <div key={i} className="project-card reveal">

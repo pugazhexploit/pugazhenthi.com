@@ -94,8 +94,8 @@ export default function Hero() {
             penetration testing, web security, AI-driven security tools, and CTF challenges.
           </p>
           <div className="hero-btns">
-            <a href="#projects" className="btn-outline" onClick={(e) => { e.preventDefault(); document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' }); }}>VIEW PROJECTS</a>
-            <a href="/cyber_security-resiume.pdf" download="cyber_security-resiume.pdf" target="_blank" rel="noopener noreferrer" className="btn-solid">DOWNLOAD RESUME ↓</a>
+            <a href="#projects" className="btn-outline" onClick={(e) => { e.preventDefault(); document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' }); }}>EXPLORE OPS ↗</a>
+            <a href="/cyber_security-resiume.pdf" download="cyber_security-resiume.pdf" target="_blank" rel="noopener noreferrer" className="btn-solid">GRAB MY DOSSIER ↓</a>
           </div>
           <div className="hero-socials">
             <a href="https://github.com/pugazhexploit" target="_blank" rel="noopener noreferrer" className="hero-social-icon" title="GitHub">

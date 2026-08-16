@@ -65,8 +65,8 @@ export default function Skills() {
     <section id="skills" className="section">
       <div className="section-label reveal">Skills</div>
       <h2 className="section-title reveal">
-        Technical<br />
-        <span>arsenal.</span>
+        Weaponized<br />
+        <span>skill matrix.</span>
       </h2>
       <div className="skills-filter reveal">
         {Object.keys(categories).map((cat) => (

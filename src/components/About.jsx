@@ -3,9 +3,8 @@ export default function About() {
     <section id="about" className="section">
       <div className="section-label reveal">About</div>
       <h2 className="section-title reveal">
-        Breaking systems.<br />
-        Understanding threats.<br />
-        <span>Building secure solutions.</span>
+        Exploit. Analyze.<br />
+        <span>Harden everything.</span>
       </h2>
       <div className="about-inner">
         <div className="about-text reveal">
