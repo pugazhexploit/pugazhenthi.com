@@ -19,17 +19,10 @@ export default function CTFChallenge() {
     }
   });
 
-  // Task 1: Base64 Decoder State
-  const [b64Input, setB64Input] = useState('Q1RGe1BVR0FaSF9DUkFDS0VEXzIwMjZ9');
-  const [b64Output, setB64Output] = useState('');
-
-  // Task 2: ROT13 Cipher State
-  const [rotInput, setRotInput] = useState('PGF{CLORE_NFGEN_PENPXRQ_2026}');
-  const [rotOutput, setRotOutput] = useState('');
-
-  // Task 3: Hex to ASCII State
-  const [hexInput, setHexInput] = useState('43 54 46 7b 57 45 42 50 59 53 5f 52 45 43 4f 4e 7d');
-  const [hexOutput, setHexOutput] = useState('');
+  // Optional manual utility toolkit state
+  const [showToolbox, setShowToolbox] = useState(false);
+  const [toolInput, setToolInput] = useState('');
+  const [toolOutput, setToolOutput] = useState('');
 
   // Console easter egg flag injection
   useEffect(() => {
@@ -41,47 +34,33 @@ export default function CTFChallenge() {
     );
   }, []);
 
-  // Base64 Decode
-  const handleB64Decode = () => {
+  const handleToolDecode = (type) => {
+    if (!toolInput.trim()) return;
     try {
-      const decoded = atob(b64Input.trim());
-      setB64Output(decoded);
-    } catch {
-      setB64Output('Error: Invalid Base64 String');
-    }
-  };
-
-  // ROT13 Decode Function
-  const handleRot13Decode = () => {
-    const rot13 = (str) =>
-      str.replace(/[a-zA-Z]/g, (c) =>
-        String.fromCharCode((c <= 'Z' ? 90 : 122) >= (c = c.charCodeAt(0) + 13) ? c : c - 26)
-      );
-    setRotOutput(rot13(rotInput.trim()));
-  };
-
-  // Hex to ASCII Decode Function
-  const handleHexDecode = () => {
-    try {
-      const clean = hexInput.replace(/\s+/g, '');
-      let str = '';
-      for (let i = 0; i < clean.length; i += 2) {
-        str += String.fromCharCode(parseInt(clean.substr(i, 2), 16));
+      if (type === 'b64') {
+        setToolOutput(atob(toolInput.trim()));
+      } else if (type === 'rot13') {
+        const rot13 = (str) =>
+          str.replace(/[a-zA-Z]/g, (c) =>
+            String.fromCharCode((c <= 'Z' ? 90 : 122) >= (c = c.charCodeAt(0) + 13) ? c : c - 26)
+          );
+        setToolOutput(rot13(toolInput.trim()));
+      } else if (type === 'hex') {
+        const clean = toolInput.replace(/\s+/g, '');
+        let str = '';
+        for (let i = 0; i < clean.length; i += 2) {
+          str += String.fromCharCode(parseInt(clean.substr(i, 2), 16));
+        }
+        setToolOutput(str);
       }
-      setHexOutput(str);
     } catch {
-      setHexOutput('Error: Invalid Hexadecimal Payload');
+      setToolOutput('Error: Unable to decode payload with selected format.');
     }
   };
 
-  const submitDirectFlag = (flag) => {
-    if (!flag || flag.startsWith('Error')) return;
-    setFlagInput(flag);
-    validateFlag(flag);
-  };
-
-  const validateFlag = (flagToValidate) => {
-    const clean = (flagToValidate || flagInput).trim();
+  const handleFlagSubmit = (e) => {
+    e.preventDefault();
+    const clean = flagInput.trim();
     if (!clean) return;
 
     if (VALID_FLAGS.includes(clean)) {
@@ -92,29 +71,24 @@ export default function CTFChallenge() {
       }
       setStatus({
         success: true,
-        msg: `🎉 FLAG ACCEPTED! Excellent work, hacker! [${Math.min(
-          solvedFlags.includes(clean) ? solvedFlags.length : solvedFlags.length + 1,
-          VALID_FLAGS.length
-        )}/${VALID_FLAGS.length} Solved]`,
+        msg: `🎉 FLAG ACCEPTED! Excellent work, hacker! [${
+          solvedFlags.includes(clean) ? solvedFlags.length : solvedFlags.length + 1
+        }/${VALID_FLAGS.length} Solved]`,
       });
+      setFlagInput('');
     } else {
       setStatus({
         success: false,
-        msg: '❌ INVALID FLAG: Check your cipher decode output or console logs.',
+        msg: '❌ INVALID FLAG: Solve the ciphers or inspect console logs and try again.',
       });
     }
-  };
-
-  const handleFlagSubmit = (e) => {
-    e.preventDefault();
-    validateFlag(flagInput);
   };
 
   return (
     <div className="ctf-challenge-box reveal">
       <div className="ctf-challenge-header">
         <div className="ctf-challenge-title">
-          <i className="fas fa-shield-halved text-[#00ff41]"></i> INTERACTIVE CTF LAB & CYBER DECODERS
+          <i className="fas fa-shield-halved text-[#00ff41]"></i> AUTHENTIC CTF CHALLENGES
         </div>
         <div className="ctf-score-badge">
           FLAGS SOLVED: <span className="highlight">{solvedFlags.length}</span> / {VALID_FLAGS.length}
@@ -122,127 +96,99 @@ export default function CTFChallenge() {
       </div>
 
       <div className="ctf-challenge-body">
-        {/* TASK 1: Base64 Crypto (EASY) */}
+        {/* TASK 1: Base64 Crypto */}
         <div className="ctf-task">
           <div className="task-header-line">
-            <span className="task-title">⚡ TASK 1: BASE64 CRYPTO CIPHER</span>
+            <span className="task-title">⚡ TASK 1: BASE64 CIPHERPAYLOAD</span>
             <span className="task-level easy">EASY</span>
           </div>
           <p className="task-desc">
-            Decode the Base64 payload to reveal the flag format <code>CTF&#123;...&#125;</code>:
+            Analyze and decode this Base64 encrypted payload to discover Flag 1:
           </p>
-
-          <div className="ctf-decoder-tool">
-            <div className="decoder-input-group">
-              <input
-                type="text"
-                className="ctf-input"
-                value={b64Input}
-                onChange={(e) => setB64Input(e.target.value)}
-                placeholder="Paste Base64 payload..."
-              />
-              <button className="btn-solid decode-btn" onClick={handleB64Decode}>
-                DECODE BASE64
-              </button>
-            </div>
-            {b64Output && (
-              <div className="decoder-output">
-                <div>
-                  <span>Decoded Result:</span> <code>{b64Output}</code>
-                </div>
-                <button className="btn-outline submit-direct-btn" onClick={() => submitDirectFlag(b64Output)}>
-                  SUBMIT THIS FLAG →
-                </button>
-              </div>
-            )}
+          <div className="ctf-payload-display">
+            <code>Q1RGe1BVR0AZSF9DUkFDS0VEXzIwMjZ9</code>
           </div>
         </div>
 
-        {/* TASK 2: ROT13 Substitution Cipher (MEDIUM) */}
+        {/* TASK 2: ROT13 Caesar Substitution */}
         <div className="ctf-task">
           <div className="task-header-line">
             <span className="task-title">🔑 TASK 2: ROT13 CAESAR SUBSTITUTION</span>
             <span className="task-level medium">MEDIUM</span>
           </div>
           <p className="task-desc">
-            This cipher uses a 13-character letter shift substitution (ROT13). Decode the shifted flag payload below:
+            This cipher string is encrypted using 13-letter Caesar shift substitution (ROT13):
           </p>
-
-          <div className="ctf-decoder-tool">
-            <div className="decoder-input-group">
-              <input
-                type="text"
-                className="ctf-input"
-                value={rotInput}
-                onChange={(e) => setRotInput(e.target.value)}
-                placeholder="Paste ROT13 cipher text..."
-              />
-              <button className="btn-solid decode-btn" onClick={handleRot13Decode}>
-                APPLY ROT13
-              </button>
-            </div>
-            {rotOutput && (
-              <div className="decoder-output">
-                <div>
-                  <span>Decoded Result:</span> <code>{rotOutput}</code>
-                </div>
-                <button className="btn-outline submit-direct-btn" onClick={() => submitDirectFlag(rotOutput)}>
-                  SUBMIT THIS FLAG →
-                </button>
-              </div>
-            )}
+          <div className="ctf-payload-display">
+            <code>PGF&#123;CLORE_NFGEN_PENPXRQ_2026&#125;</code>
           </div>
         </div>
 
-        {/* TASK 3: Hexadecimal & ASCII Analysis (MEDIUM) */}
+        {/* TASK 3: Hexadecimal Packet Inspection */}
         <div className="ctf-task">
           <div className="task-header-line">
-            <span className="task-title">🔬 TASK 3: HEXADECIMAL PAYLOAD ANALYSIS</span>
+            <span className="task-title">🔬 TASK 3: HEXADECIMAL PACKET PAYLOAD</span>
             <span className="task-level medium">MEDIUM</span>
           </div>
           <p className="task-desc">
-            Convert the raw hexadecimal packet payload bytes into readable ASCII text:
+            Convert these raw hexadecimal byte values into plain text ASCII format:
           </p>
+          <div className="ctf-payload-display">
+            <code>43 54 46 7b 57 45 42 50 59 53 5f 52 45 43 4f 4e 7d</code>
+          </div>
+        </div>
 
-          <div className="ctf-decoder-tool">
-            <div className="decoder-input-group">
+        {/* TASK 4: Browser Console Recon */}
+        <div className="ctf-task">
+          <div className="task-header-line">
+            <span className="task-title">🔍 TASK 4: BROWSER CONSOLE RECONNAISSANCE</span>
+            <span className="task-level hard">HARD</span>
+          </div>
+          <p className="task-desc">
+            Open Developer Tools (Press <code>F12</code> or <code>Right-Click ➔ Inspect</code>) and examine the <strong>Console</strong> tab logs to capture Flag 4.
+          </p>
+        </div>
+
+        {/* Optional Decoder Tool Toggle */}
+        <div className="ctf-toolbox-toggle">
+          <button
+            type="button"
+            className="btn-outline toolbox-btn"
+            onClick={() => setShowToolbox(!showToolbox)}
+          >
+            <i className="fas fa-wrench"></i> {showToolbox ? 'HIDE CYBER DECODER TOOLKIT' : 'OPEN CYBER DECODER TOOLKIT'}
+          </button>
+        </div>
+
+        {/* Manual Cyber Toolkit */}
+        {showToolbox && (
+          <div className="ctf-toolkit-box">
+            <div className="toolkit-title">⚙️ MANUAL CYBER DECODER TOOLKIT</div>
+            <div className="toolkit-input-group">
               <input
                 type="text"
                 className="ctf-input"
-                value={hexInput}
-                onChange={(e) => setHexInput(e.target.value)}
-                placeholder="Hex payload bytes (e.g. 43 54 46...)"
+                value={toolInput}
+                onChange={(e) => setToolInput(e.target.value)}
+                placeholder="Paste payload string to decode..."
               />
-              <button className="btn-solid decode-btn" onClick={handleHexDecode}>
-                HEX ➔ ASCII
-              </button>
+              <div className="toolkit-actions">
+                <button className="btn-solid tool-btn" onClick={() => handleToolDecode('b64')}>Base64</button>
+                <button className="btn-solid tool-btn" onClick={() => handleToolDecode('rot13')}>ROT13</button>
+                <button className="btn-solid tool-btn" onClick={() => handleToolDecode('hex')}>Hex ➔ ASCII</button>
+              </div>
             </div>
-            {hexOutput && (
-              <div className="decoder-output">
-                <div>
-                  <span>Decoded Result:</span> <code>{hexOutput}</code>
-                </div>
-                <button className="btn-outline submit-direct-btn" onClick={() => submitDirectFlag(hexOutput)}>
-                  SUBMIT THIS FLAG →
-                </button>
+            {toolOutput && (
+              <div className="toolkit-result">
+                <span>Output:</span> <code>{toolOutput}</code>
               </div>
             )}
           </div>
-        </div>
+        )}
 
-        {/* TASK 4: Console Recon (INSPECTION) */}
-        <div className="ctf-task">
-          <div className="task-header-line">
-            <span className="task-title">🔍 TASK 4: BROWSER CONSOLE RECON</span>
-            <span className="task-level medium">HARD</span>
-          </div>
-          <p className="task-desc">
-            Open Developer Tools (Press <code>F12</code> or <code>Right-Click ➔ Inspect</code>) and check the <strong>Console</strong> tab for hidden system logs and dispatch keys.
-          </p>
-        </div>
-
-        {/* Flag Submission Box */}
+        {/* Single Main Flag Submission Box */}
         <form onSubmit={handleFlagSubmit} className="ctf-submit-form">
+          <div className="submit-title">🚩 SUBMIT DISCOVERED FLAG</div>
           <div className="submit-input-group">
             <span className="terminal-prefix">root@pugazh-ctf:~#</span>
             <input
@@ -250,7 +196,7 @@ export default function CTFChallenge() {
               className="ctf-input flag-input"
               value={flagInput}
               onChange={(e) => setFlagInput(e.target.value)}
-              placeholder="Submit flag format: CTF{...}"
+              placeholder="Enter flag format: CTF{...}"
             />
             <button type="submit" className="btn-outline submit-flag-btn">
               VALIDATE FLAG
@@ -271,7 +217,7 @@ export default function CTFChallenge() {
             <span className="banner-icon">🛡️</span>
             <div>
               <strong>CLASSIFIED BADGE UNLOCKED:</strong> VERIFIED CTF SOLVER
-              <div className="unlocked-sub">You have successfully solved {solvedFlags.length} of {VALID_FLAGS.length} security challenges!</div>
+              <div className="unlocked-sub">You have solved {solvedFlags.length} of {VALID_FLAGS.length} security challenges!</div>
             </div>
           </div>
         )}
