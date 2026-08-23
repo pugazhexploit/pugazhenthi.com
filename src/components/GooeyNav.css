@@ -269,41 +269,79 @@
 }
 
 /* ---- Light theme overrides ---- */
+
+/* Nav text colors */
 [data-theme="light"] .gooey-nav-container .gooey-nav-inner ul {
-  color: #4a4a5a;
+  color: #3a4a5c;
   text-shadow: none;
 }
 
 [data-theme="light"] .gooey-nav-container .gooey-nav-inner ul li {
-  color: #4a4a5a;
+  color: #3a4a5c;
 }
 
 [data-theme="light"] .gooey-nav-container .gooey-nav-inner ul li:hover {
-  color: #006622;
+  color: #047857;
+  text-shadow: none;
+}
+
+[data-theme="light"] .gooey-nav-container .gooey-nav-inner ul li:focus-within:has(:focus-visible) {
+  box-shadow: 0 0 0.5px 1.5px #059669;
+}
+
+/* Active pill — soft teal/green */
+[data-theme="light"] .gooey-nav-container .gooey-nav-inner ul li::after {
+  background: #059669;
 }
 
 [data-theme="light"] .gooey-nav-container .gooey-nav-inner ul li.active {
-  color: #0a0a0f;
+  color: #ffffff;
+  text-shadow: none;
 }
 
-[data-theme="light"] .gooey-nav-container .gooey-nav-inner ul li::after {
-  background: #00cc33;
-}
-
+/* Effect text layer */
 [data-theme="light"] .gooey-nav-container .effect.text {
-  color: #4a4a5a;
+  color: #3a4a5c;
 }
 
 [data-theme="light"] .gooey-nav-container .effect.text.active {
-  color: #0a0a0f;
+  color: #ffffff;
+}
+
+/*
+ * CRITICAL FIX: Disable the gooey blur/contrast filter on light theme.
+ * The effect relies on mix-blend-mode:screen + black background which
+ * creates an ugly visible black rectangle on light backgrounds.
+ * Instead, hide the filter layer entirely and let the pill ::after
+ * handle the visual transition cleanly.
+ */
+[data-theme="light"] .gooey-nav-container .effect.filter {
+  filter: none;
+  mix-blend-mode: normal;
+  opacity: 0;
+  pointer-events: none;
+}
+
+[data-theme="light"] .gooey-nav-container .effect.filter::before {
+  display: none;
 }
 
 [data-theme="light"] .gooey-nav-container .effect.filter::after {
-  background: #00cc33;
+  display: none;
 }
 
-[data-theme="light"] .gooey-nav-container .effect.filter {
-  mix-blend-mode: lighten;
+/* Hide particles on light theme (they rely on the filter layer) */
+[data-theme="light"] .gooey-nav-container .particle,
+[data-theme="light"] .gooey-nav-container .point {
+  display: none;
+}
+
+/* Light theme particle color overrides (for any residual) */
+[data-theme="light"] {
+  --color-1: #059669;
+  --color-2: #0284c7;
+  --color-3: #047857;
+  --color-4: #10b981;
 }
 
 /* ---- Hide on mobile (falls back to hamburger menu) ---- */
