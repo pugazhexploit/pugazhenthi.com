@@ -1,3 +1,5 @@
+import CTFChallenge from './CTFChallenge';
+
 export default function CTF() {
   const killChainSteps = ['RECON', 'ENUMERATION', 'EXPLOIT', 'PRIVESC', 'FORENSICS', 'FLAG CAPTURED'];
   const focusAreas = ['Web Security', 'Cryptography', 'OSINT', 'Forensics', 'Reverse Engineering', 'Steganography'];
@@ -41,6 +43,10 @@ export default function CTF() {
           <div key={area} className="ctf-focus-item">{area}</div>
         ))}
       </div>
+
+      {/* Interactive CTF Challenge & Decoder Component */}
+      <CTFChallenge />
+
       <div className="deco-label" style={{ marginTop: '30px' }}>[ CTF MODE ]</div>
     </section>
   );

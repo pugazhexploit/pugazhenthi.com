@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react';
 import ParticleCanvas from './components/ParticleCanvas';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
@@ -17,6 +18,7 @@ import Contact from './components/Contact';
 import Footer from './components/Footer';
 import BackToTop from './components/BackToTop';
 import Chatbot from './components/Chatbot';
+import CyberTerminal from './components/CyberTerminal';
 import { SpeedInsights } from '@vercel/speed-insights/react';
 import {
   useScrollReveal,
@@ -25,9 +27,23 @@ import {
 } from './hooks/useAnimations';
 
 export default function App() {
+  const [terminalOpen, setTerminalOpen] = useState(false);
+
   useScrollReveal();
   useConsoleEasterEgg();
   useGlitchEffect();
+
+  // Keyboard shortcut: Ctrl + ~ or ` (Backtick) opens terminal
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if ((e.ctrlKey && e.key === '~') || (e.ctrlKey && e.key === '`')) {
+        e.preventDefault();
+        setTerminalOpen((prev) => !prev);
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, []);
 
   return (
     <>
@@ -49,6 +65,22 @@ export default function App() {
         <CyberFocus />
         <Contact />
       </main>
+
+      {/* Floating Terminal Trigger Button */}
+      <button
+        className="cyber-terminal-trigger"
+        onClick={() => setTerminalOpen(true)}
+        title="Open Interactive Cyber Shell (Ctrl + ~)"
+      >
+        <i className="fas fa-terminal"></i> &gt;_ TERMINAL
+      </button>
+
+      {/* Interactive Cyber CLI Terminal Modal */}
+      <CyberTerminal
+        isOpen={terminalOpen}
+        onClose={() => setTerminalOpen(false)}
+      />
+
       <Footer />
       <BackToTop />
       <Chatbot />
