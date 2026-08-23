@@ -16,6 +16,7 @@ import CyberFocus from './components/CyberFocus';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import BackToTop from './components/BackToTop';
+import Chatbot from './components/Chatbot';
 import { SpeedInsights } from '@vercel/speed-insights/react';
 import {
   useScrollReveal,
@@ -50,6 +51,7 @@ export default function App() {
       </main>
       <Footer />
       <BackToTop />
+      <Chatbot />
       <SpeedInsights />
     </>
   );
