@@ -166,11 +166,7 @@
 }
 
 .gooey-nav-container .effect.filter::before {
-  content: '';
-  position: absolute;
-  inset: -75px;
-  z-index: -2;
-  background: #000000;
+  display: none;
 }
 
 .gooey-nav-container .effect.filter::after {
