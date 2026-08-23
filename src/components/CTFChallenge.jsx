@@ -8,8 +8,59 @@ const VALID_FLAGS = [
   'CTF{GOV_DISCLOSURE_ACK}',
 ];
 
+// Synthetic Cyber Sound Effects using Web Audio API
+function playSuccessSound() {
+  try {
+    const AudioCtx = window.AudioContext || window.webkitAudioContext;
+    if (!AudioCtx) return;
+    const ctx = new AudioCtx();
+    const notes = [523.25, 659.25, 783.99, 1046.50]; // C5, E5, G5, C6 cyber arpeggio chime
+    notes.forEach((freq, i) => {
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+      osc.type = 'sine';
+      osc.frequency.setValueAtTime(freq, ctx.currentTime + i * 0.08);
+      gain.gain.setValueAtTime(0.18, ctx.currentTime + i * 0.08);
+      gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + i * 0.08 + 0.28);
+      osc.connect(gain);
+      gain.connect(ctx.destination);
+      osc.start(ctx.currentTime + i * 0.08);
+      osc.stop(ctx.currentTime + i * 0.08 + 0.28);
+    });
+  } catch {
+    // Audio Context fallback
+  }
+}
+
+function playErrorSound() {
+  try {
+    const AudioCtx = window.AudioContext || window.webkitAudioContext;
+    if (!AudioCtx) return;
+    const ctx = new AudioCtx();
+    const osc = ctx.createOscillator();
+    const gain = ctx.createGain();
+    osc.type = 'sawtooth';
+    osc.frequency.setValueAtTime(180, ctx.currentTime);
+    osc.frequency.linearRampToValueAtTime(110, ctx.currentTime + 0.22);
+    gain.gain.setValueAtTime(0.15, ctx.currentTime);
+    gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.22);
+    osc.connect(gain);
+    gain.connect(ctx.destination);
+    osc.start(ctx.currentTime);
+    osc.stop(ctx.currentTime + 0.22);
+  } catch {
+    // Audio Context fallback
+  }
+}
+
 export default function CTFChallenge() {
-  const [flagInput, setFlagInput] = useState('');
+  const [taskInputs, setTaskInputs] = useState({
+    task1: '',
+    task2: '',
+    task3: '',
+    task4: '',
+    main: '',
+  });
   const [status, setStatus] = useState(null); // { success: boolean, msg: string }
   const [solvedFlags, setSolvedFlags] = useState(() => {
     try {
@@ -58,12 +109,16 @@ export default function CTFChallenge() {
     }
   };
 
-  const handleFlagSubmit = (e) => {
-    e.preventDefault();
-    const clean = flagInput.trim();
+  const handleTaskInputChange = (key, val) => {
+    setTaskInputs((prev) => ({ ...prev, [key]: val }));
+  };
+
+  const validateAndSubmitFlag = (rawInput, taskKey) => {
+    const clean = (rawInput || '').trim();
     if (!clean) return;
 
     if (VALID_FLAGS.includes(clean)) {
+      playSuccessSound();
       if (!solvedFlags.includes(clean)) {
         const updated = [...solvedFlags, clean];
         setSolvedFlags(updated);
@@ -75,8 +130,11 @@ export default function CTFChallenge() {
           solvedFlags.includes(clean) ? solvedFlags.length : solvedFlags.length + 1
         }/${VALID_FLAGS.length} Solved]`,
       });
-      setFlagInput('');
+      if (taskKey) {
+        setTaskInputs((prev) => ({ ...prev, [taskKey]: '' }));
+      }
     } else {
+      playErrorSound();
       setStatus({
         success: false,
         msg: '❌ INVALID FLAG: Solve the ciphers or inspect console logs and try again.',
@@ -84,11 +142,16 @@ export default function CTFChallenge() {
     }
   };
 
+  const handleSubmit = (e, taskKey) => {
+    e.preventDefault();
+    validateAndSubmitFlag(taskInputs[taskKey], taskKey);
+  };
+
   return (
     <div className="ctf-challenge-box reveal">
       <div className="ctf-challenge-header">
         <div className="ctf-challenge-title">
-          <i className="fas fa-shield-halved text-[#00ff41]"></i> AUTHENTIC CTF CHALLENGES
+          <i className="fas fa-shield-halved text-[#00ff41]"></i> AUTHENTIC CTF CHALLENGES & FLAG LAB
         </div>
         <div className="ctf-score-badge">
           FLAGS SOLVED: <span className="highlight">{solvedFlags.length}</span> / {VALID_FLAGS.length}
@@ -108,6 +171,19 @@ export default function CTFChallenge() {
           <div className="ctf-payload-display">
             <code>Q1RGe1BVR0AZSF9DUkFDS0VEXzIwMjZ9</code>
           </div>
+
+          <form onSubmit={(e) => handleSubmit(e, 'task1')} className="task-submit-row">
+            <input
+              type="text"
+              className="ctf-input task-flag-input"
+              value={taskInputs.task1}
+              onChange={(e) => handleTaskInputChange('task1', e.target.value)}
+              placeholder="Submit Flag 1: CTF{...}"
+            />
+            <button type="submit" className="btn-solid submit-task-btn">
+              SUBMIT FLAG
+            </button>
+          </form>
         </div>
 
         {/* TASK 2: ROT13 Caesar Substitution */}
@@ -122,6 +198,19 @@ export default function CTFChallenge() {
           <div className="ctf-payload-display">
             <code>PGF&#123;CLORE_NFGEN_PENPXRQ_2026&#125;</code>
           </div>
+
+          <form onSubmit={(e) => handleSubmit(e, 'task2')} className="task-submit-row">
+            <input
+              type="text"
+              className="ctf-input task-flag-input"
+              value={taskInputs.task2}
+              onChange={(e) => handleTaskInputChange('task2', e.target.value)}
+              placeholder="Submit Flag 2: CTF{...}"
+            />
+            <button type="submit" className="btn-solid submit-task-btn">
+              SUBMIT FLAG
+            </button>
+          </form>
         </div>
 
         {/* TASK 3: Hexadecimal Packet Inspection */}
@@ -136,6 +225,19 @@ export default function CTFChallenge() {
           <div className="ctf-payload-display">
             <code>43 54 46 7b 57 45 42 50 59 53 5f 52 45 43 4f 4e 7d</code>
           </div>
+
+          <form onSubmit={(e) => handleSubmit(e, 'task3')} className="task-submit-row">
+            <input
+              type="text"
+              className="ctf-input task-flag-input"
+              value={taskInputs.task3}
+              onChange={(e) => handleTaskInputChange('task3', e.target.value)}
+              placeholder="Submit Flag 3: CTF{...}"
+            />
+            <button type="submit" className="btn-solid submit-task-btn">
+              SUBMIT FLAG
+            </button>
+          </form>
         </div>
 
         {/* TASK 4: Browser Console Recon */}
@@ -147,6 +249,19 @@ export default function CTFChallenge() {
           <p className="task-desc">
             Open Developer Tools (Press <code>F12</code> or <code>Right-Click ➔ Inspect</code>) and examine the <strong>Console</strong> tab logs to capture Flag 4.
           </p>
+
+          <form onSubmit={(e) => handleSubmit(e, 'task4')} className="task-submit-row">
+            <input
+              type="text"
+              className="ctf-input task-flag-input"
+              value={taskInputs.task4}
+              onChange={(e) => handleTaskInputChange('task4', e.target.value)}
+              placeholder="Submit Flag 4: CTF{...}"
+            />
+            <button type="submit" className="btn-solid submit-task-btn">
+              SUBMIT FLAG
+            </button>
+          </form>
         </div>
 
         {/* Optional Decoder Tool Toggle */}
@@ -187,15 +302,15 @@ export default function CTFChallenge() {
         )}
 
         {/* Single Main Flag Submission Box */}
-        <form onSubmit={handleFlagSubmit} className="ctf-submit-form">
-          <div className="submit-title">🚩 SUBMIT DISCOVERED FLAG</div>
+        <form onSubmit={(e) => handleSubmit(e, 'main')} className="ctf-submit-form">
+          <div className="submit-title">🚩 GLOBAL FLAG VALIDATION TERMINAL</div>
           <div className="submit-input-group">
             <span className="terminal-prefix">root@pugazh-ctf:~#</span>
             <input
               type="text"
               className="ctf-input flag-input"
-              value={flagInput}
-              onChange={(e) => setFlagInput(e.target.value)}
+              value={taskInputs.main}
+              onChange={(e) => handleTaskInputChange('main', e.target.value)}
               placeholder="Enter flag format: CTF{...}"
             />
             <button type="submit" className="btn-outline submit-flag-btn">

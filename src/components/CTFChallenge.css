@@ -141,6 +141,25 @@
   letter-spacing: 1px;
 }
 
+/* Task Inline Submit Row */
+.task-submit-row {
+  display: flex;
+  gap: 10px;
+  margin-top: 12px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.task-flag-input {
+  font-size: 0.65rem !important;
+  padding: 8px 12px !important;
+}
+
+.submit-task-btn {
+  font-size: 0.58rem !important;
+  padding: 8px 16px !important;
+}
+
 /* Optional Decoder Toolkit */
 .ctf-toolbox-toggle {
   margin: 20px 0;
