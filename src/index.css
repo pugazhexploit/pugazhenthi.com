@@ -173,7 +173,7 @@ nav.scrolled {
 }
 
 .nav-links {
-  display: flex;
+  display: none; /* Hidden on desktop — GooeyNav replaces it */
   gap: 4px;
   align-items: center;
 }
@@ -202,6 +202,14 @@ nav.scrolled {
   color: #ffffff;
   background: rgba(0,255,65,0.18);
   box-shadow: inset 0 0 0 1px rgba(0,255,65,0.4);
+}
+
+/* Desktop action buttons (resume + theme) next to GooeyNav */
+.nav-actions-desktop {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  z-index: 1001;
 }
 
 .nav-hamburger {
@@ -2593,7 +2601,11 @@ footer {
     width: 36px;
     height: 36px;
   }
+  .nav-actions-desktop {
+    display: none;
+  }
   .nav-links {
+    display: flex; /* Show mobile slide-out menu */
     position: fixed;
     top: 0;
     right: 0;
