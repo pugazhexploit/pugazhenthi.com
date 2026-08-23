@@ -1,37 +1,23 @@
 import { useEffect, useRef, useState, lazy, Suspense } from 'react';
+import VisitorCounter from './VisitorCounter';
 
-const LightRays = lazy(() => import('./LightRays'));
 const Lanyard = lazy(() => import('./Lanyard'));
+const LightRays = lazy(() => import('./LightRays'));
 
-const roles = ['Cybersecurity Enthusiast', 'Bug Researcher', 'Ethical Hacker', 'Penetration Tester', 'CTF Player'];
+const roles = ['Cybersecurity Enthusiast', 'Ethical Hacker', 'Penetration Tester', 'CTF Player'];
 
 export default function Hero() {
   const typingRef = useRef(null);
-  const [theme, setTheme] = useState(() => 
-    typeof document !== 'undefined' ? document.documentElement.getAttribute('data-theme') || localStorage.getItem('theme') || 'dark' : 'dark'
-  );
+  const [theme, setTheme] = useState(() => document.documentElement.getAttribute('data-theme') || 'dark');
 
-  // Sync theme changes from document attribute
   useEffect(() => {
-    const updateTheme = () => {
-      const current = document.documentElement.getAttribute('data-theme') || 'dark';
-      setTheme(current);
-    };
-
-    const observer = new MutationObserver(updateTheme);
-    observer.observe(document.documentElement, {
-      attributes: true,
-      attributeFilter: ['data-theme']
+    const observer = new MutationObserver(() => {
+      setTheme(document.documentElement.getAttribute('data-theme') || 'dark');
     });
-
-    window.addEventListener('storage', updateTheme);
-    return () => {
-      observer.disconnect();
-      window.removeEventListener('storage', updateTheme);
-    };
+    observer.observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+    return () => observer.disconnect();
   }, []);
 
-  // Typing animation
   useEffect(() => {
     const el = typingRef.current;
     if (!el) return;
@@ -111,6 +97,9 @@ export default function Hero() {
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7l10 7 10-7"/></svg>
             </a>
           </div>
+
+          {/* Visitor Counter & Cookie Session Badge */}
+          <VisitorCounter />
         </div>
 
         <div className="hero-lanyard-stage">

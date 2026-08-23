@@ -111,6 +111,25 @@
   border: 1px solid rgba(255, 189, 46, 0.3);
 }
 
+.task-level.solved {
+  color: #00ff41;
+  background: rgba(0, 255, 65, 0.18);
+  border: 1px solid rgba(0, 255, 65, 0.5);
+  box-shadow: 0 0 10px rgba(0, 255, 65, 0.2);
+}
+
+.ctf-task.solved-card {
+  border-color: rgba(0, 255, 65, 0.35);
+  background: rgba(0, 255, 65, 0.04);
+}
+
+.submit-task-btn.solved-btn {
+  background: rgba(0, 255, 65, 0.15) !important;
+  border-color: rgba(0, 255, 65, 0.4) !important;
+  color: #00ff41 !important;
+  cursor: default !important;
+}
+
 .task-desc {
   font-size: 0.72rem;
   color: var(--text-muted, #a4a4b8);

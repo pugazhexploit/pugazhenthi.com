@@ -1,12 +1,14 @@
 import { useState, useEffect } from 'react';
 import './CTFChallenge.css';
 
-const VALID_FLAGS = [
-  'CTF{PUGAZH_CRACKED_2026}',
-  'CTF{CYBER_ASTRA_CRACKED_2026}',
-  'CTF{WEBPYS_RECON}',
-  'CTF{GOV_DISCLOSURE_ACK}',
-];
+const TASK_FLAGS = {
+  task1: 'CTF{PUGAZH_CRACKED_2026}',
+  task2: 'CTF{CYBER_ASTRA_CRACKED_2026}',
+  task3: 'CTF{WEBPYS_RECON}',
+  task4: 'CTF{GOV_DISCLOSURE_ACK}',
+};
+
+const VALID_FLAGS = Object.values(TASK_FLAGS);
 
 // Synthetic Cyber Sound Effects using Web Audio API
 function playSuccessSound() {
@@ -54,14 +56,6 @@ function playErrorSound() {
 }
 
 export default function CTFChallenge() {
-  const [taskInputs, setTaskInputs] = useState({
-    task1: '',
-    task2: '',
-    task3: '',
-    task4: '',
-    main: '',
-  });
-  const [status, setStatus] = useState(null); // { success: boolean, msg: string }
   const [solvedFlags, setSolvedFlags] = useState(() => {
     try {
       return JSON.parse(localStorage.getItem('solved_ctf_flags') || '[]');
@@ -69,6 +63,16 @@ export default function CTFChallenge() {
       return [];
     }
   });
+
+  const [taskInputs, setTaskInputs] = useState({
+    task1: '',
+    task2: '',
+    task3: '',
+    task4: '',
+    main: '',
+  });
+
+  const [status, setStatus] = useState(null); // { success: boolean, msg: string }
 
   // Optional manual utility toolkit state
   const [showToolbox, setShowToolbox] = useState(false);
@@ -123,16 +127,15 @@ export default function CTFChallenge() {
 
     if (matchedFlag) {
       playSuccessSound();
-      if (!solvedFlags.includes(matchedFlag)) {
-        const updated = [...solvedFlags, matchedFlag];
+      let updated = [...solvedFlags];
+      if (!updated.includes(matchedFlag)) {
+        updated.push(matchedFlag);
         setSolvedFlags(updated);
         localStorage.setItem('solved_ctf_flags', JSON.stringify(updated));
       }
       setStatus({
         success: true,
-        msg: `🎉 FLAG ACCEPTED! Excellent work, hacker! [${
-          solvedFlags.includes(matchedFlag) ? solvedFlags.length : solvedFlags.length + 1
-        }/${VALID_FLAGS.length} Solved]`,
+        msg: `🎉 FLAG ACCEPTED! Excellent work, hacker! [${updated.length}/${VALID_FLAGS.length} Solved]`,
       });
       if (taskKey) {
         setTaskInputs((prev) => ({ ...prev, [taskKey]: '' }));
@@ -151,6 +154,11 @@ export default function CTFChallenge() {
     validateAndSubmitFlag(taskInputs[taskKey], taskKey);
   };
 
+  const isTaskSolved = (taskKey) => {
+    const flag = TASK_FLAGS[taskKey];
+    return solvedFlags.includes(flag);
+  };
+
   return (
     <div className="ctf-challenge-box reveal">
       <div className="ctf-challenge-header">
@@ -164,10 +172,12 @@ export default function CTFChallenge() {
 
       <div className="ctf-challenge-body">
         {/* TASK 1: Base64 Crypto */}
-        <div className="ctf-task">
+        <div className={`ctf-task ${isTaskSolved('task1') ? 'solved-card' : ''}`}>
           <div className="task-header-line">
             <span className="task-title">⚡ TASK 1: BASE64 CIPHERPAYLOAD</span>
-            <span className="task-level easy">EASY</span>
+            <span className={`task-level ${isTaskSolved('task1') ? 'solved' : 'easy'}`}>
+              {isTaskSolved('task1') ? '✓ SOLVED' : 'EASY'}
+            </span>
           </div>
           <p className="task-desc">
             Analyze and decode this Base64 encrypted payload to discover Flag 1:
@@ -180,21 +190,28 @@ export default function CTFChallenge() {
             <input
               type="text"
               className="ctf-input task-flag-input"
-              value={taskInputs.task1}
+              value={isTaskSolved('task1') ? TASK_FLAGS.task1 : taskInputs.task1}
               onChange={(e) => handleTaskInputChange('task1', e.target.value)}
               placeholder="Submit Flag 1: CTF{...}"
+              disabled={isTaskSolved('task1')}
             />
-            <button type="submit" className="btn-solid submit-task-btn">
-              SUBMIT FLAG
+            <button
+              type="submit"
+              className={`btn-solid submit-task-btn ${isTaskSolved('task1') ? 'solved-btn' : ''}`}
+              disabled={isTaskSolved('task1')}
+            >
+              {isTaskSolved('task1') ? '✓ SOLVED' : 'SUBMIT FLAG'}
             </button>
           </form>
         </div>
 
         {/* TASK 2: ROT13 Caesar Substitution */}
-        <div className="ctf-task">
+        <div className={`ctf-task ${isTaskSolved('task2') ? 'solved-card' : ''}`}>
           <div className="task-header-line">
             <span className="task-title">🔑 TASK 2: ROT13 CAESAR SUBSTITUTION</span>
-            <span className="task-level medium">MEDIUM</span>
+            <span className={`task-level ${isTaskSolved('task2') ? 'solved' : 'medium'}`}>
+              {isTaskSolved('task2') ? '✓ SOLVED' : 'MEDIUM'}
+            </span>
           </div>
           <p className="task-desc">
             This cipher string is encrypted using 13-letter Caesar shift substitution (ROT13):
@@ -207,21 +224,28 @@ export default function CTFChallenge() {
             <input
               type="text"
               className="ctf-input task-flag-input"
-              value={taskInputs.task2}
+              value={isTaskSolved('task2') ? TASK_FLAGS.task2 : taskInputs.task2}
               onChange={(e) => handleTaskInputChange('task2', e.target.value)}
               placeholder="Submit Flag 2: CTF{...}"
+              disabled={isTaskSolved('task2')}
             />
-            <button type="submit" className="btn-solid submit-task-btn">
-              SUBMIT FLAG
+            <button
+              type="submit"
+              className={`btn-solid submit-task-btn ${isTaskSolved('task2') ? 'solved-btn' : ''}`}
+              disabled={isTaskSolved('task2')}
+            >
+              {isTaskSolved('task2') ? '✓ SOLVED' : 'SUBMIT FLAG'}
             </button>
           </form>
         </div>
 
         {/* TASK 3: Hexadecimal Packet Inspection */}
-        <div className="ctf-task">
+        <div className={`ctf-task ${isTaskSolved('task3') ? 'solved-card' : ''}`}>
           <div className="task-header-line">
             <span className="task-title">🔬 TASK 3: HEXADECIMAL PACKET PAYLOAD</span>
-            <span className="task-level medium">MEDIUM</span>
+            <span className={`task-level ${isTaskSolved('task3') ? 'solved' : 'medium'}`}>
+              {isTaskSolved('task3') ? '✓ SOLVED' : 'MEDIUM'}
+            </span>
           </div>
           <p className="task-desc">
             Convert these raw hexadecimal byte values into plain text ASCII format:
@@ -234,21 +258,28 @@ export default function CTFChallenge() {
             <input
               type="text"
               className="ctf-input task-flag-input"
-              value={taskInputs.task3}
+              value={isTaskSolved('task3') ? TASK_FLAGS.task3 : taskInputs.task3}
               onChange={(e) => handleTaskInputChange('task3', e.target.value)}
               placeholder="Submit Flag 3: CTF{...}"
+              disabled={isTaskSolved('task3')}
             />
-            <button type="submit" className="btn-solid submit-task-btn">
-              SUBMIT FLAG
+            <button
+              type="submit"
+              className={`btn-solid submit-task-btn ${isTaskSolved('task3') ? 'solved-btn' : ''}`}
+              disabled={isTaskSolved('task3')}
+            >
+              {isTaskSolved('task3') ? '✓ SOLVED' : 'SUBMIT FLAG'}
             </button>
           </form>
         </div>
 
         {/* TASK 4: Browser Console Recon */}
-        <div className="ctf-task">
+        <div className={`ctf-task ${isTaskSolved('task4') ? 'solved-card' : ''}`}>
           <div className="task-header-line">
             <span className="task-title">🔍 TASK 4: BROWSER CONSOLE RECONNAISSANCE</span>
-            <span className="task-level hard">HARD</span>
+            <span className={`task-level ${isTaskSolved('task4') ? 'solved' : 'hard'}`}>
+              {isTaskSolved('task4') ? '✓ SOLVED' : 'HARD'}
+            </span>
           </div>
           <p className="task-desc">
             Open Developer Tools (Press <code>F12</code> or <code>Right-Click ➔ Inspect</code>) and examine the <strong>Console</strong> tab logs to capture Flag 4.
@@ -258,12 +289,17 @@ export default function CTFChallenge() {
             <input
               type="text"
               className="ctf-input task-flag-input"
-              value={taskInputs.task4}
+              value={isTaskSolved('task4') ? TASK_FLAGS.task4 : taskInputs.task4}
               onChange={(e) => handleTaskInputChange('task4', e.target.value)}
               placeholder="Submit Flag 4: CTF{...}"
+              disabled={isTaskSolved('task4')}
             />
-            <button type="submit" className="btn-solid submit-task-btn">
-              SUBMIT FLAG
+            <button
+              type="submit"
+              className={`btn-solid submit-task-btn ${isTaskSolved('task4') ? 'solved-btn' : ''}`}
+              disabled={isTaskSolved('task4')}
+            >
+              {isTaskSolved('task4') ? '✓ SOLVED' : 'SUBMIT FLAG'}
             </button>
           </form>
         </div>
