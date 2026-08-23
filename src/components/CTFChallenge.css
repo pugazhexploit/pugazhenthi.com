@@ -68,63 +68,47 @@
   border-radius: 6px;
 }
 
+.task-header-line {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
 .task-title {
   font-family: var(--font-mono, 'Space Mono', monospace);
   font-size: 0.68rem;
   font-weight: 700;
   color: #00ff41;
   letter-spacing: 1px;
-  margin-bottom: 8px;
 }
 
-.task-desc {
-  font-size: 0.72rem;
-  color: var(--text-muted, #a4a4b8);
-  line-height: 1.7;
-}
-
-.task-desc code {
-  color: #00f3ff;
-  background: rgba(0, 243, 255, 0.08);
-  padding: 2px 6px;
-  border-radius: 3px;
-  font-size: 0.68rem;
-}
-
-/* Decoder tool */
-.ctf-decoder-tool {
-  margin-top: 14px;
-}
-
-.decoder-input-group, .submit-input-group {
-  display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
-  align-items: center;
-}
-
-.ctf-input {
-  flex: 1;
-  min-width: 220px;
-  background: rgba(10, 10, 15, 0.9);
-  border: 1px solid rgba(0, 255, 65, 0.2);
-  border-radius: 4px;
-  padding: 10px 14px;
-  color: #ffffff;
+.task-level {
   font-family: var(--font-mono, 'Space Mono', monospace);
-  font-size: 0.7rem;
-  outline: none;
-  transition: border-color 0.2s ease;
+  font-size: 0.52rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  padding: 2px 8px;
+  border-radius: 3px;
+  text-transform: uppercase;
 }
 
-.ctf-input:focus {
-  border-color: #00ff41;
-  box-shadow: 0 0 10px rgba(0, 255, 65, 0.15);
+.task-level.easy {
+  color: #00ff41;
+  background: rgba(0, 255, 65, 0.1);
+  border: 1px solid rgba(0, 255, 65, 0.3);
 }
 
-.decode-btn, .submit-flag-btn {
-  padding: 10px 20px !important;
-  font-size: 0.62rem !important;
+.task-level.medium {
+  color: #00f3ff;
+  background: rgba(0, 243, 255, 0.1);
+  border: 1px solid rgba(0, 243, 255, 0.3);
+}
+
+.task-level.hard {
+  color: #ffbd2e;
+  background: rgba(255, 189, 46, 0.1);
+  border: 1px solid rgba(255, 189, 46, 0.3);
 }
 
 .decoder-output {
@@ -134,6 +118,17 @@
   border-left: 2px solid #00f3ff;
   font-size: 0.7rem;
   color: #d0d0e2;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.submit-direct-btn {
+  font-size: 0.55rem !important;
+  padding: 5px 12px !important;
+  letter-spacing: 1px !important;
 }
 
 .decoder-output code {
