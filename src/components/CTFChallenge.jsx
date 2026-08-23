@@ -114,20 +114,24 @@ export default function CTFChallenge() {
   };
 
   const validateAndSubmitFlag = (rawInput, taskKey) => {
-    const clean = (rawInput || '').trim();
+    const clean = (rawInput || '').trim().replace(/^['"]|['"]$/g, '');
     if (!clean) return;
 
-    if (VALID_FLAGS.includes(clean)) {
+    const matchedFlag = VALID_FLAGS.find(
+      (f) => f.toLowerCase() === clean.toLowerCase()
+    );
+
+    if (matchedFlag) {
       playSuccessSound();
-      if (!solvedFlags.includes(clean)) {
-        const updated = [...solvedFlags, clean];
+      if (!solvedFlags.includes(matchedFlag)) {
+        const updated = [...solvedFlags, matchedFlag];
         setSolvedFlags(updated);
         localStorage.setItem('solved_ctf_flags', JSON.stringify(updated));
       }
       setStatus({
         success: true,
         msg: `🎉 FLAG ACCEPTED! Excellent work, hacker! [${
-          solvedFlags.includes(clean) ? solvedFlags.length : solvedFlags.length + 1
+          solvedFlags.includes(matchedFlag) ? solvedFlags.length : solvedFlags.length + 1
         }/${VALID_FLAGS.length} Solved]`,
       });
       if (taskKey) {
@@ -169,7 +173,7 @@ export default function CTFChallenge() {
             Analyze and decode this Base64 encrypted payload to discover Flag 1:
           </p>
           <div className="ctf-payload-display">
-            <code>Q1RGe1BVR0AZSF9DUkFDS0VEXzIwMjZ9</code>
+            <code>Q1RGe1BVR0FaSF9DUkFDS0VEXzIwMjZ9</code>
           </div>
 
           <form onSubmit={(e) => handleSubmit(e, 'task1')} className="task-submit-row">
