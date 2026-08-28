@@ -19,6 +19,7 @@ import BackToTop from './components/BackToTop';
 import Chatbot from './components/Chatbot';
 import PasswordAnalyzer from './components/PasswordAnalyzer';
 import { SpeedInsights } from '@vercel/speed-insights/react';
+import { Analytics } from '@vercel/analytics/react';
 import {
   useScrollReveal,
   useConsoleEasterEgg,
@@ -56,6 +57,7 @@ export default function App() {
       <BackToTop />
       <Chatbot />
       <SpeedInsights />
+      <Analytics />
     </>
   );
 }
