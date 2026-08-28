@@ -19,6 +19,7 @@ import Footer from './components/Footer';
 import BackToTop from './components/BackToTop';
 import Chatbot from './components/Chatbot';
 import CyberTerminal from './components/CyberTerminal';
+import PasswordAnalyzer from './components/PasswordAnalyzer';
 import { SpeedInsights } from '@vercel/speed-insights/react';
 import {
   useScrollReveal,
@@ -60,6 +61,7 @@ export default function App() {
         <Education />
         <Achievements />
         <CTF />
+        <PasswordAnalyzer />
         <Certifications />
         <Recognition />
         <CyberFocus />
