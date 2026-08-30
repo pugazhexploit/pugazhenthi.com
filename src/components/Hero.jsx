@@ -81,7 +81,7 @@ export default function Hero() {
           </p>
           <div className="hero-btns">
             <a href="#projects" className="btn-outline" onClick={(e) => { e.preventDefault(); document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' }); }}>EXPLORE OPS ↗</a>
-            <a href="/cyber_security-resiume.pdf" download="cyber_security-resiume.pdf" target="_blank" rel="noopener noreferrer" className="btn-solid">GRAB MY DOSSIER ↓</a>
+            <a href="/cyber_security-resiume.pdf" download="cyber_security-resiume.pdf" target="_blank" rel="noopener noreferrer" className="btn-solid">GRAB MY RESUME ↓</a>
           </div>
           <div className="hero-socials">
             <a href="https://github.com/pugazhexploit" target="_blank" rel="noopener noreferrer" className="hero-social-icon" title="GitHub">
