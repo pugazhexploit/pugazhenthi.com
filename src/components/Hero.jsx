@@ -3,6 +3,7 @@ import VisitorCounter from './VisitorCounter';
 
 const Lanyard = lazy(() => import('./Lanyard'));
 const LightRays = lazy(() => import('./LightRays'));
+const FogSphere = lazy(() => import('./FogSphere'));
 
 const roles = ['Cybersecurity Enthusiast', 'Ethical Hacker', 'Penetration Tester', 'CTF Player'];
 
@@ -46,6 +47,18 @@ export default function Hero() {
   return (
     <section id="hero" className="hero" aria-label="Pugazhenthi J - Cybersecurity Researcher Hero Section" itemScope itemType="https://schema.org/Person">
       <Suspense fallback={null}>
+        <FogSphere
+          color1={isLight ? '#059669' : '#00ff41'}
+          color2={isLight ? '#0284c7' : '#00f3ff'}
+          color3={isLight ? '#34d399' : '#80ffea'}
+          radius={0.46}
+          speed={0.45}
+          density={1.1}
+          swirl={2.2}
+          center={[0.65, 0.5]}
+          followMouse={true}
+          mouseInfluence={0.07}
+        />
         <LightRays
           raysOrigin="top-center"
           raysColor={isLight ? '#059669' : '#00ff41'}
