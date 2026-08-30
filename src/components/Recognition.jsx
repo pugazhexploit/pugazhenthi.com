@@ -1,3 +1,5 @@
+import PerspectiveGrid from './PerspectiveGrid';
+
 const recognitions = [
   { icon: '🛡️', text: 'Indian Government (*.gov.in) Vulnerability Disclosure — Acknowledged' },
   { icon: '🏆', text: '14th Place — Chaitanya CTF' },
@@ -9,7 +11,12 @@ const recognitions = [
 
 export default function Recognition() {
   return (
-    <section id="recognition" className="section">
+    <section id="recognition" className="section" style={{ position: 'relative', overflow: 'hidden' }}>
+      <PerspectiveGrid
+        speed={0.3}
+        density={0.8}
+        horizon={0.7}
+      />
       <div className="section-label reveal">Recognition</div>
       <h2 className="section-title reveal">
         Milestones<br />

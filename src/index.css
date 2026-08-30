@@ -1670,18 +1670,29 @@ section, .section {
 }
 
 /* 18. Recognition */
+#recognition > .section-label,
+#recognition > .section-title,
+#recognition > .recognition-intro {
+  position: relative;
+  z-index: 1;
+}
+
 .recognition-intro {
   font-size: 0.78rem;
   color: var(--text-muted);
   max-width: 700px;
   line-height: 1.9;
   margin-bottom: 40px;
+  position: relative;
+  z-index: 1;
 }
 
 .recognition-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
   gap: 16px;
+  position: relative;
+  z-index: 1;
 }
 
 .recognition-card {
