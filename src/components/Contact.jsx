@@ -1,8 +1,16 @@
 import ConnectForm from './ConnectForm';
+import PerspectiveGrid from './PerspectiveGrid';
 
 export default function Contact() {
   return (
-    <section id="contact" className="section">
+    <section id="contact" className="section" style={{ position: 'relative', overflow: 'hidden' }}>
+      <PerspectiveGrid
+        gridColor="#00ff41"
+        glowColor="#00f3ff"
+        speed={0.4}
+        gridSize={0.5}
+        fade={0.6}
+      />
       <div className="section-label reveal">Contact</div>
       <h2 className="section-title reveal">
         Initiate a<br />

@@ -1768,11 +1768,20 @@ section, .section {
 }
 
 /* 20. Contact & Secure Connect Form */
+#contact > .section-label,
+#contact > .section-title,
+#contact > .section-subtitle {
+  position: relative;
+  z-index: 1;
+}
+
 .contact-inner {
   display: grid;
   grid-template-columns: 1fr 1.25fr;
   gap: 36px;
   align-items: stretch;
+  position: relative;
+  z-index: 1;
 }
 
 .contact-info-panel {
