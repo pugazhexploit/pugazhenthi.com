@@ -1,0 +1,22 @@
+{
+  "name": "Pugazhenthi J - Cybersecurity Researcher & AI/ML Developer",
+  "short_name": "Pugazhenthi J",
+  "description": "Portfolio of Pugazhenthi J — Cybersecurity Researcher, Ethical Hacker, Penetration Tester & AI/ML Developer. Specialized in Web Security, Offensive Security, Vulnerability Disclosure, and AI-driven Security Tools.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0a0a0a",
+  "theme_color": "#00ff41",
+  "orientation": "portrait-primary",
+  "scope": "/",
+  "lang": "en",
+  "dir": "ltr",
+  "categories": ["technology", "security", "portfolio"],
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

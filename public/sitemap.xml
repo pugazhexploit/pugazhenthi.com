@@ -1,57 +1,110 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<?xml-stylesheet type="text/xsl" href="sitemap.xsl"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
+        xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+        http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+
+  <!-- Homepage -->
   <url>
     <loc>https://pugazhenthi.com/</loc>
-    <lastmod>2026-08-14</lastmod>
+    <lastmod>2026-08-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://pugazhenthi.com/profilepic.jpg</image:loc>
+      <image:title>Pugazhenthi J - Cybersecurity Researcher</image:title>
+      <image:caption>Pugazhenthi J, Cybersecurity Researcher and AI/ML Developer from Tamil Nadu, India</image:caption>
+    </image:image>
   </url>
+
+  <!-- About Section -->
   <url>
     <loc>https://pugazhenthi.com/#about</loc>
-    <lastmod>2026-08-14</lastmod>
+    <lastmod>2026-08-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Vulnerability Disclosure -->
+  <url>
+    <loc>https://pugazhenthi.com/#vulnerability-disclosure</loc>
+    <lastmod>2026-08-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Skills Section -->
+  <url>
+    <loc>https://pugazhenthi.com/#skills</loc>
+    <lastmod>2026-08-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+
+  <!-- Projects Section -->
   <url>
     <loc>https://pugazhenthi.com/#projects</loc>
-    <lastmod>2026-08-14</lastmod>
+    <lastmod>2026-08-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
-  <url>
-    <loc>https://pugazhenthi.com/#skills</loc>
-    <lastmod>2026-08-14</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
+
+  <!-- Experience Section -->
   <url>
     <loc>https://pugazhenthi.com/#experience</loc>
-    <lastmod>2026-08-14</lastmod>
+    <lastmod>2026-08-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+
+  <!-- Education Section -->
+  <url>
+    <loc>https://pugazhenthi.com/#education</loc>
+    <lastmod>2026-08-30</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Achievements Section -->
   <url>
     <loc>https://pugazhenthi.com/#achievements</loc>
-    <lastmod>2026-08-14</lastmod>
+    <lastmod>2026-08-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-  <url>
-    <loc>https://pugazhenthi.com/#certifications</loc>
-    <lastmod>2026-08-14</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
+
+  <!-- CTF Section -->
   <url>
     <loc>https://pugazhenthi.com/#ctf</loc>
-    <lastmod>2026-08-14</lastmod>
+    <lastmod>2026-08-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+
+  <!-- Certifications Section -->
+  <url>
+    <loc>https://pugazhenthi.com/#certifications</loc>
+    <lastmod>2026-08-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Contact Section -->
   <url>
     <loc>https://pugazhenthi.com/#contact</loc>
-    <lastmod>2026-08-14</lastmod>
+    <lastmod>2026-08-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
+
+  <!-- Resume/CV -->
+  <url>
+    <loc>https://pugazhenthi.com/cyber_security-resiume.pdf</loc>
+    <lastmod>2026-08-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
 </urlset>

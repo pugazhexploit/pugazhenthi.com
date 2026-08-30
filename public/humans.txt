@@ -1,0 +1,18 @@
+/* TEAM */
+Name: Pugazhenthi J
+Role: Cybersecurity Researcher & AI/ML Developer
+Site: https://pugazhenthi.com
+Email: pugazhenthij283@gmail.com
+GitHub: https://github.com/pugazhexploit
+LinkedIn: https://linkedin.com/in/pugazh28
+Location: Chidambaram, Tamil Nadu, India
+
+/* SITE */
+Standards: HTML5, CSS3, JavaScript ES2024
+Framework: React 19, Vite 8
+Hosting: Vercel
+Language: English
+Software: Visual Studio Code, Kali Linux, Burp Suite
+
+/* THANKS */
+React Three Fiber, Three.js, EmailJS, Vercel

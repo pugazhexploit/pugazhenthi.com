@@ -35,7 +35,7 @@ export default function App() {
     <>
       <ParticleCanvas />
       <Navbar />
-      <main>
+      <main role="main" itemScope itemType="https://schema.org/ProfilePage" aria-label="Pugazhenthi J - Cybersecurity Researcher Portfolio">
         <Hero />
         <About />
         <VulnerabilityDisclosure />

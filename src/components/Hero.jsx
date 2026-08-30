@@ -44,7 +44,7 @@ export default function Hero() {
   const isLight = theme === 'light';
 
   return (
-    <section id="hero" className="hero">
+    <section id="hero" className="hero" aria-label="Pugazhenthi J - Cybersecurity Researcher Hero Section" itemScope itemType="https://schema.org/Person">
       <Suspense fallback={null}>
         <LightRays
           raysOrigin="top-center"
@@ -108,7 +108,7 @@ export default function Hero() {
               <div className="lanyard-skeleton" aria-hidden="true">
                 <div className="lanyard-skeleton-strap"></div>
                 <div className="lanyard-skeleton-card">
-                  <img src="/profilepic.jpg" alt="Pugazhenthi J" className="lanyard-skeleton-img" width="220" height="300" />
+                  <img src="/profilepic.jpg" alt="Pugazhenthi J - Cybersecurity Researcher and Ethical Hacker from Tamil Nadu, India" className="lanyard-skeleton-img" width="220" height="300" loading="eager" />
                 </div>
               </div>
             }

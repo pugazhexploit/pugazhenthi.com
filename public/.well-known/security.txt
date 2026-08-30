@@ -1,0 +1,5 @@
+Contact: mailto:pugazhenthij283@gmail.com
+Preferred-Languages: en, ta
+Canonical: https://pugazhenthi.com/.well-known/security.txt
+Policy: https://pugazhenthi.com/#vulnerability-disclosure
+Expires: 2027-12-31T23:59:59.000Z

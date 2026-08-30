@@ -1,4 +1,108 @@
+# Robots.txt for pugazhenthi.com
+# Cybersecurity Researcher Portfolio - Pugazhenthi J
+
+# Allow all search engine crawlers
 User-agent: *
 Allow: /
+Disallow: /api/
+Disallow: /.env
+Disallow: /node_modules/
 
+# Google
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 1
+
+User-agent: Googlebot-Image
+Allow: /
+
+User-agent: Googlebot-Video
+Allow: /
+
+# Bing / MSN
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1
+
+User-agent: msnbot
+Allow: /
+
+# Yahoo / Slurp
+User-agent: Slurp
+Allow: /
+Crawl-delay: 2
+
+# DuckDuckGo
+User-agent: DuckDuckBot
+Allow: /
+
+# Baidu
+User-agent: Baiduspider
+Allow: /
+Crawl-delay: 3
+
+# Yandex
+User-agent: YandexBot
+Allow: /
+Crawl-delay: 2
+
+# Sogou
+User-agent: Sogou
+Allow: /
+Crawl-delay: 3
+
+# Apple / Applebot
+User-agent: Applebot
+Allow: /
+
+# Facebook
+User-agent: facebookexternalhit
+Allow: /
+
+# Twitter
+User-agent: Twitterbot
+Allow: /
+
+# LinkedIn
+User-agent: LinkedInBot
+Allow: /
+
+# Telegram
+User-agent: TelegramBot
+Allow: /
+
+# Discord
+User-agent: Discordbot
+Allow: /
+
+# WhatsApp
+User-agent: WhatsApp
+Allow: /
+
+# Slack
+User-agent: Slackbot
+Allow: /
+
+# Pinterest
+User-agent: Pinterest
+Allow: /
+
+# Archive.org
+User-agent: ia_archiver
+Allow: /
+
+# Block bad bots
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: SemrushBot
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: DotBot
+Disallow: /
+
+# Sitemaps
 Sitemap: https://pugazhenthi.com/sitemap.xml

@@ -101,7 +101,7 @@ export default function Navbar() {
         onClick={() => setMenuOpen(false)}
         aria-hidden="true"
       />
-      <nav className={scrolled ? 'scrolled' : ''}>
+      <nav className={scrolled ? 'scrolled' : ''} role="navigation" aria-label="Main navigation">
         <div className="nav-logo" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} style={{ cursor: 'pointer' }}>
           <span className="nav-logo-name">PUGAZHENTHI J</span>
           <span className="nav-logo-bug"><i className="fas fa-bug"></i></span>
