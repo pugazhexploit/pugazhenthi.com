@@ -8,7 +8,6 @@ My work focuses on **Web Application Security, Vulnerability Research, Ethical H
 
 I enjoy understanding how systems work, identifying security weaknesses, and developing practical tools that make security research faster and more effective.
 
----
 
 ## About Me
 
