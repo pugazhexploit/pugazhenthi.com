@@ -84,7 +84,7 @@ Pugazhenthi J
 Cybersecurity Specialist & Ethical Hacker
 Email: ${RECIPIENT_EMAIL}
 GitHub: https://github.com/pugazhexploit
-LinkedIn: https://linkedin.com/in/pugazh28`;
+LinkedIn: https://in.linkedin.com/in/pugazhenthij-cyber`;
 
   const response = await fetch(`https://formsubmit.co/ajax/${encodeURIComponent(RECIPIENT_EMAIL)}`, {
     method: 'POST',

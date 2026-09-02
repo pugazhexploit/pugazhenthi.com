@@ -72,7 +72,7 @@ Download : /cyber_security-resiume.pdf`,
 Email    : pugazhenthij283@gmail.com
 Phone    : +91 8608442802
 GitHub   : https://github.com/pugazhexploit
-LinkedIn : https://linkedin.com/in/pugazh28
+LinkedIn : https://in.linkedin.com/in/pugazhenthij-cyber
 TryHackMe: https://tryhackme.com/p/pugazhenthij283`,
 
   flag: `[+] CTF HINT:

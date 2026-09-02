@@ -19,7 +19,7 @@ const KB = {
   resume: '/cyber_security-resiume.pdf',
   socials: {
     github: 'https://github.com/pugazhexploit',
-    linkedin: 'https://linkedin.com/in/pugazh28',
+    linkedin: 'https://in.linkedin.com/in/pugazhenthij-cyber',
     tryhackme: 'https://tryhackme.com/p/pugazhenthij283',
   },
   education: {

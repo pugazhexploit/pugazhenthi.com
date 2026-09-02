@@ -11,7 +11,7 @@ export default function Footer() {
       </div>
       <div className="footer-socials" aria-label="Social media links" style={{ marginTop: '20px', display: 'flex', justifyContent: 'center', gap: '20px' }}>
         <a href="https://github.com/pugazhexploit" target="_blank" rel="noopener noreferrer" className="footer-social" aria-label="GitHub Profile">GitHub</a>
-        <a href="https://linkedin.com/in/pugazh28" target="_blank" rel="noopener noreferrer" className="footer-social" aria-label="LinkedIn Profile">LinkedIn</a>
+        <a href="https://in.linkedin.com/in/pugazhenthij-cyber" target="_blank" rel="noopener noreferrer" className="footer-social" aria-label="LinkedIn Profile">LinkedIn</a>
         <a href="https://tryhackme.com/p/pugazhenthij283" target="_blank" rel="noopener noreferrer" className="footer-social" aria-label="TryHackMe Profile">TryHackMe</a>
         <a href="mailto:pugazhenthij283@gmail.com" className="footer-social" aria-label="Email Pugazhenthi J">Email</a>
       </div>

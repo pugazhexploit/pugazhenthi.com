@@ -6,10 +6,12 @@ I’m **Pugazhenthi J**, a Computer Science student, cybersecurity researcher, e
 
 My work focuses on **Web Application Security, Vulnerability Research, Ethical Hacking, Security Automation, AI-powered tools, and Software Development**.
 
+
 I enjoy understanding how systems work, identifying security weaknesses, and developing practical tools that make security research faster and more effective.
 
+---
 
-## About Me
+## About me 
 
 I’m currently pursuing a **B.Sc. Computer Science** and continuously developing my skills through hands-on cybersecurity research, Capture The Flag challenges, projects, and security experimentation.
 

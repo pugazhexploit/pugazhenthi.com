@@ -1,5 +1,5 @@
-# Robots.txt for pugazhenthi.com
-# Cybersecurity Researcher Portfolio - Pugazhenthi J
+# Robots.txt for pugazhenthi.in
+# Cybersecurity Researcher Portfolio - Pugazhenthi J 
 
 # Allow all search engine crawlers
 User-agent: *
