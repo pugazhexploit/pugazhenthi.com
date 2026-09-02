@@ -8,12 +8,12 @@
 
   <!-- Homepage -->
   <url>
-    <loc>https://pugazhenthi.com/</loc>
+    <loc>https://pugazhenthi.vercel.app/</loc>
     <lastmod>2026-08-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <image:image>
-      <image:loc>https://pugazhenthi.com/profilepic.jpg</image:loc>
+      <image:loc>https://pugazhenthi.vercel.app/profilepic.jpg</image:loc>
       <image:title>Pugazhenthi J - Cybersecurity Researcher</image:title>
       <image:caption>Pugazhenthi J, Cybersecurity Researcher and AI/ML Developer from Tamil Nadu, India</image:caption>
     </image:image>
@@ -21,7 +21,7 @@
 
   <!-- About Section -->
   <url>
-    <loc>https://pugazhenthi.com/#about</loc>
+    <loc>https://pugazhenthi.vercel.app/#about</loc>
     <lastmod>2026-08-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
@@ -29,7 +29,7 @@
 
   <!-- Vulnerability Disclosure -->
   <url>
-    <loc>https://pugazhenthi.com/#vulnerability-disclosure</loc>
+    <loc>https://pugazhenthi.vercel.app/#vulnerability-disclosure</loc>
     <lastmod>2026-08-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
@@ -37,7 +37,7 @@
 
   <!-- Skills Section -->
   <url>
-    <loc>https://pugazhenthi.com/#skills</loc>
+    <loc>https://pugazhenthi.vercel.app/#skills</loc>
     <lastmod>2026-08-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -45,7 +45,7 @@
 
   <!-- Projects Section -->
   <url>
-    <loc>https://pugazhenthi.com/#projects</loc>
+    <loc>https://pugazhenthi.vercel.app/#projects</loc>
     <lastmod>2026-08-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
@@ -53,7 +53,7 @@
 
   <!-- Experience Section -->
   <url>
-    <loc>https://pugazhenthi.com/#experience</loc>
+    <loc>https://pugazhenthi.vercel.app/#experience</loc>
     <lastmod>2026-08-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -61,7 +61,7 @@
 
   <!-- Education Section -->
   <url>
-    <loc>https://pugazhenthi.com/#education</loc>
+    <loc>https://pugazhenthi.vercel.app/#education</loc>
     <lastmod>2026-08-30</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.7</priority>
@@ -69,7 +69,7 @@
 
   <!-- Achievements Section -->
   <url>
-    <loc>https://pugazhenthi.com/#achievements</loc>
+    <loc>https://pugazhenthi.vercel.app/#achievements</loc>
     <lastmod>2026-08-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -77,7 +77,7 @@
 
   <!-- CTF Section -->
   <url>
-    <loc>https://pugazhenthi.com/#ctf</loc>
+    <loc>https://pugazhenthi.vercel.app/#ctf</loc>
     <lastmod>2026-08-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -85,7 +85,7 @@
 
   <!-- Certifications Section -->
   <url>
-    <loc>https://pugazhenthi.com/#certifications</loc>
+    <loc>https://pugazhenthi.vercel.app/#certifications</loc>
     <lastmod>2026-08-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -93,7 +93,7 @@
 
   <!-- Contact Section -->
   <url>
-    <loc>https://pugazhenthi.com/#contact</loc>
+    <loc>https://pugazhenthi.vercel.app/#contact</loc>
     <lastmod>2026-08-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -101,7 +101,7 @@
 
   <!-- Resume/CV -->
   <url>
-    <loc>https://pugazhenthi.com/cyber_security-resiume.pdf</loc>
+    <loc>https://pugazhenthi.vercel.app/resume.pdf</loc>
     <lastmod>2026-08-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
