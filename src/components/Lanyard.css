@@ -8,10 +8,12 @@
   align-items: center;
   pointer-events: auto;
   overflow: visible;
+  touch-action: pan-y;
 }
 
 .lanyard-wrapper canvas {
   width: 100% !important;
   height: 100% !important;
   display: block;
+  touch-action: pan-y;
 }

@@ -145,3 +145,26 @@
   background: rgba(5, 150, 105, 0.04);
   border-color: rgba(5, 150, 105, 0.15);
 }
+
+@media (max-width: 480px) {
+  .visitor-badge-container {
+    padding: 14px 16px;
+    margin-top: 18px;
+  }
+  .visitor-badge-grid {
+    gap: 6px;
+  }
+  .visitor-metric-box {
+    padding: 8px 4px;
+  }
+  .metric-num {
+    font-size: 0.82rem;
+  }
+  .metric-label {
+    font-size: 0.46rem;
+    letter-spacing: 0.5px;
+  }
+  .visitor-badge-status {
+    font-size: 0.56rem;
+  }
+}

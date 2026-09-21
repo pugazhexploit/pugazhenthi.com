@@ -1,14 +1,8 @@
 import ConnectForm from './ConnectForm';
-import PerspectiveGrid from './PerspectiveGrid';
 
 export default function Contact() {
   return (
-    <section id="contact" className="section" style={{ position: 'relative', overflow: 'hidden' }}>
-      <PerspectiveGrid
-        speed={0.3}
-        density={0.8}
-        horizon={0.7}
-      />
+    <section id="contact" className="section">
       <div className="section-label reveal">Contact</div>
       <h2 className="section-title reveal">
         Initiate a<br />
