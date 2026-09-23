@@ -1,4 +1,4 @@
-# Pugazhenthi J
+ # Pugazhenthi J
 
 ## Cybersecurity Researcher • Ethical Hacker • Developer
 
@@ -13,7 +13,7 @@ I enjoy understanding how systems work, identifying security weaknesses, and dev
 
 ## About me 
 
-I’m currently pursuing a **B.Sc. Computer Science** and continuously developing my skills through hands-on cybersecurity research, Capture The Flag challenges, projects, and security experimentation.
+ I’m currently pursuing a **B.Sc. Computer Science** and continuously developing my skills through hands-on cybersecurity research, Capture The Flag challenges, projects, and security experimentation.
 
 My approach is simple:
 
@@ -199,8 +199,3 @@ I’m open to:
 
 If you're interested in cybersecurity, AI, or building something innovative, feel free to connect with me.
 
-### **Pugazhenthi J**
-
-**Cybersecurity Researcher | Ethical Hacker | Developer**
-
-> **Think like an attacker. Build like a developer. Defend like a security engineer.**
