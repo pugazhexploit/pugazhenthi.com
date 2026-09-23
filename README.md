@@ -183,3 +183,24 @@ I’m especially interested in the intersection of:
 I believe the future of cybersecurity will not only depend on finding vulnerabilities, but also on building intelligent systems that can detect, analyze, and respond to threats efficiently.
 
 ---
+
+## Let's Connect
+
+I’m open to:
+
+* Cybersecurity internships
+* Security research opportunities
+* Bug bounty collaboration
+* Open-source projects
+* AI & cybersecurity projects
+* CTF teams
+* Developer collaborations
+* Research opportunities
+
+If you're interested in cybersecurity, AI, or building something innovative, feel free to connect with me.
+
+## **Pugazhenthi J**
+
+**Cybersecurity Researcher | Ethical Hacker | Developer**
+
+> **Think like an attacker. Build like a developer. Defend like a security engineer.**
